@@ -1,0 +1,21 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %} Contribute {% endblock %}
+
+{% block content %}
+
+<p>
+    This is a public goods game with
+    {{ Constants.players_per_group }} players per group,
+    an endowment of {{ Constants.endowment }},
+    and an efficiency factor of {{ Constants.efficiency_factor }}.
+
+    The minimum contribution rule is {{ group.minimum_contribution_rule }}
+</p>
+
+
+{% formfield player.contribution2 with label="How much will you contribute?" %}
+
+{% next_button %}
+
+{% endblock %}

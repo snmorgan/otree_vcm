@@ -1,0 +1,32 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    VCM Game
+{% endblock %}
+
+{% block content %}
+
+    {% include 'participation_vcm/Instructions.html' %}
+
+{#    <p>#}
+{#        You are the decision-maker. Participants provided the following comments: {{group.group_comments}}#}
+{#    </p>#}
+
+
+<table class="table-condensed" style="width:500px; margin-top:20px;">
+
+        <tr><td>Participants provided the following comments:</td><td></td></tr>
+        {% for p in player.get_others_in_group %}
+            <tr><td></td><td>{{ p.comment }}</td></tr>
+        {% endfor %}
+
+
+    </table>
+    <p></p>
+
+    {% formfield group.minimum_contribution_rule with label="Set a minimum contribution rule for the group account" %}
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %} VCM Game {% endblock %}
+
+{% block content %}
+
+    {% include 'participation_vcm/Instructions.html' %}
+
+    <p>
+    You are a PLAYER in this game. You have {{Constants.endowment}} to allocate between an individual and a group account.
+    </p>
+
+    {% formfield player.comment with label="Please comment on what you think the minimum contribution rule for the group account should be. Please provide justification or rationale for your choice." %}
+
+    {% next_button %}
+
+{% endblock %}

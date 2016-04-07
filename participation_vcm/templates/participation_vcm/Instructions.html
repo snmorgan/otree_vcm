@@ -1,0 +1,21 @@
+{% extends "global/Instructions.html" %}
+
+{% block instructions %}
+<p>
+    This is a VCM game with 5 players.
+</p>
+<p>
+    An individual from the group will be randomly selected to be the decision-maker.
+
+    All other participants will receive an endowment of {{ Constants.endowment }};
+    the decision-maker receives nothing.
+
+    Individuals will be asked to submit comments about a minimum contribution rule to the group account.
+
+    The decision-maker will read the comments and will choose a minimum contribution rule.
+
+    Participants will be provided with the chosen rule, and will then choose how many tokens to allocate to the group account.
+
+    Individuals will repeat this process for 5 rounds under the chosen rule.
+</p>
+{% endblock %}

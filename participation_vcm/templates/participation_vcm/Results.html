@@ -1,0 +1,93 @@
+{% extends "global/Base.html" %} {% load staticfiles otree_tags %}
+
+{% block title %} Results {% endblock %}
+
+{% block content %}
+
+{% if player.id_in_group < 5 %}
+<table class="table-condensed" style="width:500px; margin-top:20px;">
+
+        <tr><td>Your initial endowment was:</td><td>{{ Constants.endowment }}</td></tr>
+        <tr><td>The minimum contribution rule was:</td><td>{{ group.minimum_contribution_rule }}</td></tr>
+        <tr><td>You contributed:</td><td>{{ player.contribution }}</td></tr>
+        <tr><td>Other participants contributed:</td><td></td></tr>
+        {% for p in player.get_others_in_group %}
+            <tr><td></td><td>{{ p.contribution }}</td></tr>
+        {% endfor %}
+
+        <tr><td>Total contribution:</td><td>{{ group.total_contribution }}</td></tr>
+
+        <tr><td colspan="2"><hr/></td></tr>
+
+        <tr><td>Your earnings from the group account:</td><td>{{ group.individual_share }}</td></tr>
+
+        <tr><td colspan="2"><hr/></td></tr>
+
+        <tr><td>Thus in total you earned:</td><td>{{ player.payoff }}</td></tr>
+
+    </table>
+    <p></p>
+
+{% else %}
+
+<table class="table-condensed" style="width:500px; margin-top:20px;">
+
+        <tr><td>Your initial endowment was:</td><td>{{ Constants.endowment }}</td></tr>
+        <tr><td>The minimum contribution rule was:</td><td>{{ group.minimum_contribution_rule }}</td></tr>
+        <tr><td>Other participants contributed:</td><td></td></tr>
+        {% for p in player.get_others_in_group %}
+            <tr><td></td><td>{{ p.contribution }}</td></tr>
+        {% endfor %}
+        <tr><td>Total participant contribution:</td><td>{{ group.total_contribution }}</td></tr>
+
+        <tr><td colspan="2"><hr/></td></tr>
+
+        <tr><td>Your Rulemaker salary is:</td><td>{{ player.payoff }}</td></tr>
+
+    </table>
+    <p></p>
+
+{% endif %}
+
+
+{#{% if player.id_in_group < 5 %}#}
+{##}
+{#    <p>#}
+{#    You started with an endowment of {{ Constants.endowment }},#}
+{#    of which you contributed {{ player.contribution }}.#}
+{#    </p>#}
+{##}
+{#    <p>#}
+{#    Other players contributed {{ player.other_player.contribution }}.#}
+{#    </p>#}
+{##}
+{#    <p>#}
+{#    Your group contributed {{ group.total_contribution }},#}
+{#    resulting in an individual share of {{ group.individual_share }}.#}
+{#    </p>#}
+{##}
+{#    <p>#}
+{#    Your profit is therefore {{ player.payoff }}.#}
+{#    </p>#}
+{##}
+{#    <p>#}
+{#    The minimum contribution rule was {{group.minimum_contribution_rule}}#}
+{#    </p>#}
+{##}
+{#{% else %}#}
+{##}
+{#    <p>#}
+{#        You chose a minimum contribution rule of {{ group.minimum_contribution_rule }}.#}
+{#        The group contributed {{ group.total_contribution }}.#}
+{#    </p>#}
+{##}
+{#    <p>#}
+{#    Other players contributed {{ group.group_contributions }}.#}
+{#    </p>#}
+{##}
+{#{% endif %}#}
+
+
+{% next_button %}
+
+{% endblock %}
